@@ -1,0 +1,17 @@
+set / system hostname root@leaf1.lab-srx.com     #Replace 'root' with your username, or remove if you don’t want to use a login shell on the router 
+config t       //text mode configuration (starts at '#')     
+network default {                         /* This is where we set our network details */   
+   no ip-forwarding                          //Disables IP forward    
+}                                  
+interface ethernet eth1                 #Replace 'eth1' with your interface name, or remove if you don’t want to use a login shell on the router 
+config t                           /*text mode configuration (starts at '#') */   
+login {                             //Sets up user and password for SSH     
+   username <your_username>               //Replace '<your_username>' with your actual Username, or remove if you don’t want to use a login shell on the router 
+}                                  
+bgp default                        /*This is where we set our BGP details */   
+neighbor remote-as                 254.0     //Replace 'remote-as', add AS number and replace with your actual IP or hostname of another leaf node, e.g., "leaf1"  (or the respective Leaf's ip)  
+route-map RM_CONF export          /* This is where we set outgoing routes */   
+exit-address-family               //Exit from configuration mode    
+# End Configuration for : ROUTER: leaf1      #End of your node config       -  Repeat the above steps and create a new one for each router (leaf2, ... ,叶子节点)   -- Exit to start up scripts on Router.          //Exit from startup configuration mode
+// End Configuration For : ROUTER: leaf1     	       		    - This is repeated until 5 configurations are created       			             	    Repeat the above steps and create a new one for each router (leaf2, ... ,叶子节点)  					        				          Exit to start up scripts on Router.
+Please replace '<your_username>' with your actual username in all instances where it needs replacement by text input or dynamic data source if applicable such as hostname of another leaf node etc...  Also, ensure you have the necessary permissions and access rights for these configurations based on security policies defined at containerlab level.
