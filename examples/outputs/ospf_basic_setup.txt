@@ -1,0 +1,36 @@
+# Prompt:
+Enable OSPF in area 0.0.0.0 on interfaces ethernet-1/1
+and ethernet-1/2. Set router-id to 1.1.1.1
+
+# Model: gemma3:4b
+
+# Response:
+Okay, here’s the SR Linux configuration to enable OSPF in area 0.0.0.0 on interfaces ethernet-1/1 and ethernet-1/2, and set the router-id to 1.1.1.1, based on the provided documentation.
+
+```
+router ospf 1
+  router-id 1.1.1.1
+  area 0.0.0.0
+  interface ethernet-1/1
+    ip ospf area 0.0.0.0
+  interface ethernet-1/2
+    ip ospf area 0.0.0.0
+```
+
+**Explanation of Commands:**
+
+*   `router ospf 1`:  This command enters OSPF configuration mode and specifies OSPF process ID 1.  OSPF uses process IDs to differentiate between multiple OSPF processes on a router.
+*   `router-id 1.1.1.1`: This sets the router-id to 1.1.1.1. The router-id is a crucial element in OSPF. It's a globally unique identifier that identifies the router within the OSPF domain. It’s used for neighbor discovery and is the first IP address that the OSPF process will advertise to its neighbors.
+*   `area 0.0.0.0`: This command configures OSPF to operate in area 0.0.0.0.  Areas are logical groupings of routers, and this command designates the default area for the router.  Area 0.0.0.0 is the backbone area, and all other areas connect to it.
+*   `interface ethernet-1/1`: This command enters the configuration mode for the ethernet-1/1 interface.
+*   `ip ospf area 0.0.0.0`: This command enables OSPF on the ethernet-1/1 interface and specifies that it belongs to area 0.0.0.0.
+*   `interface ethernet-1/2`: This command enters the configuration mode for the ethernet-1/2 interface.
+*   `ip ospf area 0.0.0.0`: This command enables OSPF on the ethernet-1/2 interface and specifies that it belongs to area 0.0.0.0.
+
+**Best Practices & Important Notes:**
+
+*   **Router-ID Uniqueness:**  Ensure the router-id is unique within your OSPF domain.  If multiple routers have the same router-id, OSPF will not function correctly.
+*   **Area Selection:** Carefully choose the area(s) your router participates in. This impacts routing decisions and network scalability.
+*   **Default Behavior:** The `export-routes true` command in the `ip-forwarding` section of the `network-instance` is automatically applied. This ensures that routes learned via OSPF are advertised to other routers.
+
+I have focused on the commands directly addressing the user's request, and provided additional context to ensure a solid configuration. Let me know if you have any other questions or need further clarification.

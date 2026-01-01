@@ -1,0 +1,43 @@
+# Prompt:
+Configure the system hostname as "spine-01" and set
+the management interface with IP address 192.168.1.10/24
+
+# Model: gemma3:4b
+
+# Response:
+Okay, let's configure the system hostname and the management interface as you requested.
+
+**1. Configuring the System Hostname:**
+
+To set the system name, use the following command:
+
+```
+bof name system "spine-01"
+```
+
+**Explanation:**
+
+*   `bof`: This command initiates a configuration change.
+*   `name system`: This specifies that you are configuring the system name.
+*   `"spine-01"`: This is the desired system name.  Note that the name is enclosed in quotes.
+
+**2. Configuring the Management Interface IP Address:**
+
+To assign the IP address 192.168.1.10/24 to the management interface, use the following command:
+
+```
+bof interface "management" ip-address 192.168.1.10/24
+```
+
+**Explanation:**
+
+*   `bof`: This command initiates a configuration change.
+*   `interface "management"`: This specifies that you're configuring the "management" interface.
+*   `ip-address 192.168.1.10/24`: This assigns the IP address 192.168.1.10 with a subnet mask of /24 to the interface.
+
+**Important Considerations and Best Practices (Based on the Context):**
+
+*   **Saving the Configuration:** *Crucially*, after executing these commands, you *must* save the configuration. Use the command: `bof save` to save the changes. Without saving, the changes will be lost upon reboot.
+*   **MTU:** Remember that the MTU (Maximum Transmission Unit) is configured separately using the `ip-mtu` command (as shown in Context 1). You'll need to set this according to your network requirements.
+*   **Verification:**  After saving, verify the configuration with `router "management" interface "management" show`. This will display the current IP address and other configuration parameters.
+

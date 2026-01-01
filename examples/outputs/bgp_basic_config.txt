@@ -1,0 +1,35 @@
+# Prompt:
+Configure an eBGP neighbor 10.0.0.2 with AS 65002.
+My local AS is 65001. Set the router-id to 1.1.1.1
+
+# Model: gemma3:4b
+
+# Response:
+Okay, here’s the SR Linux configuration to establish an eBGP neighbor with AS 65002, Router ID 1.1.1.1, based on the provided documentation.
+
+```cli
+system view ebgp
+ebgp-neighbor 10.0.0.2 as 65002 router-id 1.1.1.1
+```
+
+**Explanation:**
+
+*   **`system view ebgp`**: This command enters the Egress BGP configuration mode, where you define eBGP neighbors.
+*   **`ebgp-neighbor 10.0.0.2 as 65002 router-id 1.1.1.1`**: This command configures a single eBGP neighbor.
+    *   **`ebgp-neighbor 10.0.0.2`**:  This specifies the IP address of the neighbor you want to establish the eBGP session with (10.0.0.2 in this case).
+    *   **`as 65002`**: This sets the Autonomous System number of the neighbor to 65002. This is crucial for proper BGP routing within the AS.
+    *   **`router-id 1.1.1.1`**: This sets the Router ID for the BGP session. The Router ID is a 32-bit value that uniquely identifies the BGP speaker.  It’s best practice to configure this manually to avoid issues with the system's hostname resolution failing.
+
+**Important Considerations & Best Practices (Based on Documentation):**
+
+*   **Router ID:**  As the documentation highlights, manually setting the Router ID is strongly recommended.
+*   **Saving Configuration:**  After making these changes, be sure to save the configuration: `admin save`.
+*   **Error Handling (Drafts):**  Review the relevant drafts (draft-ietf-idr-error-handling-03) for best practices around BGP UPDATE message handling and potential troubleshooting.
+*   **Autoconfigure:** Confirm that autoconfigure is enabled if you are relying on DHCP to obtain the IP address of the neighbor.
+
+To verify the configuration, you can use the following commands:
+
+*   `show ebgp neighbor 10.0.0.2` – This will display the status of the eBGP neighbor relationship.
+*   `show ebgp route filter` - to ensure that any route filters are properly configured.
+
+Do you want me to help you with any other configuration tasks, such as route filtering, or setting up other BGP features?

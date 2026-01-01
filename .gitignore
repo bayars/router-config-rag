@@ -1,0 +1,60 @@
+# Claude Code configuration
+CLAUDE.md
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Vector database (generated, can be rebuilt)
+chroma_db/
+
+# Generated router configurations
+configs/
+
+# Documentation PDFs (large files, download separately)
+docs/
+*.pdf
+
+# Logs and debug files
+*.log
+debug_*.txt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
