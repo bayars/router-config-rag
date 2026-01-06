@@ -93,6 +93,8 @@ A fully local RAG (Retrieval Augmented Generation) agent that helps configure No
 
 ![Video](./docs/nomic.mp4)
 
+<video src="https://github.com/bayars/router-config-rag/blob/main/docs/nomic.mp4" controls></video>
+
 ## Quick Start
 
 ### Prerequisites
