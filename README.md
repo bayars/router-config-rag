@@ -91,7 +91,7 @@ A fully local RAG (Retrieval Augmented Generation) agent that helps configure No
 
 ## Video Presentation
 
-![Video](./doc/nomic.mp4)
+![Video](./docs/nomic.mp4)
 
 ## Quick Start
 
